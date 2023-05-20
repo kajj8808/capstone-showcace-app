@@ -59,7 +59,7 @@ export default function Student2() {
               ) : null}
             </div>
             <div className="flex flex-col justify-between border-l pl-3">
-              <div className="flex w-[50vw] flex-col">
+              <div className="flex w-[50vw] flex-col md:w-[398px]">
                 <span className="mb-1.5 text-xl font-medium">5671144</span>
                 <span className="text-xs text-gray-500">Description</span>
               </div>
