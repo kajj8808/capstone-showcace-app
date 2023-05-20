@@ -11,13 +11,27 @@ export default function Student() {
   const { register, handleSubmit, watch } = useForm<IForm>();
   const [picrurePreview, setPicrurePreview] = useState("");
   const [uploadError, setUploadError] = useState<String | null>(null);
+  const [stuNum, setStunum] = useState("");
 
   const onValid = ({ picrure }: IForm) => {
     if (picrure) {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(picrure[0]);
       fileReader.onload = () => {
-        console.log(fileReader.result);
+        const base64 = fileReader.result
+          ?.toString()
+          .split("data:image/jpeg;base64,/")[1];
+        fetch("https://facecheck.run-asia-northeast1.goorm.site/register", {
+          method: "POST",
+          mode: "cors",
+          headers: { "Content-type": "application/json;charset=utf-8" },
+          body: JSON.stringify({
+            encodedImage: base64,
+            studentID: stuNum + "",
+          }),
+        }).then((res) => {
+          console.log(res.body);
+        });
       };
     }
   };
@@ -36,10 +50,15 @@ export default function Student() {
     }
   }, [picrure]);
   //#1d1d1f
+
+  useEffect(() => {
+    const time = new Date().getTime() + "";
+    setStunum(time);
+  }, []);
   return (
     <div className="flex h-screen w-full flex-col items-center justify-center bg-[#fbfbfd] px-20">
-      <div className="rounded-2xl bg-white px-8 py-7 shadow-2xl">
-        <form onSubmit={handleSubmit(onValid)}>
+      <form onSubmit={handleSubmit(onValid)}>
+        <div className="rounded-2xl bg-white px-8 py-7 shadow-2xl">
           <div className="flex gap-8">
             <div className="relative h-28 w-28 overflow-hidden rounded-full bg-[rgba(0,0,0,0.2)] shadow-md ring-1 ring-stone-50">
               <input
@@ -60,7 +79,9 @@ export default function Student() {
             </div>
             <div className="flex flex-col justify-between border-l pl-3">
               <div className="flex w-[50vw] flex-col md:w-[398px]">
-                <span className="mb-1.5 text-xl font-medium">5671144</span>
+                <span className="mb-1.5 text-xl font-medium">
+                  {stuNum ? stuNum : ""}
+                </span>
                 <span className="text-xs text-gray-500">Description</span>
               </div>
 
@@ -77,13 +98,13 @@ export default function Student() {
               </div>
             </div>
           </div>
-        </form>
-      </div>
-      <div className="">
-        <div className="mt-24 w-32 rounded-xl bg-blue-500 p-3 text-center text-white hover:bg-teal-500 focus:bg-red-500 active:bg-yellow-500">
-          <span>Checkout</span>
         </div>
-      </div>
+        <div className="flex w-full justify-center">
+          <button className="mt-24 w-32 rounded-xl bg-blue-500 p-3 text-center text-white hover:bg-teal-500 focus:bg-red-500 active:bg-yellow-500">
+            <span>Checkout</span>
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { json } from "stream/consumers";
 
 interface IForm {
   picrure: FileList;
@@ -11,6 +12,7 @@ export default function Student2() {
   const { register, handleSubmit, watch } = useForm<IForm>();
   const [picrurePreview, setPicrurePreview] = useState("");
   const [uploadError, setUploadError] = useState<String | null>(null);
+  const stuNum = new Date().getTime();
 
   const onValid = ({ picrure }: IForm) => {
     if (picrure) {
@@ -18,6 +20,14 @@ export default function Student2() {
       fileReader.readAsDataURL(picrure[0]);
       fileReader.onload = () => {
         console.log(fileReader.result);
+        fetch("https://facecheck.run-asia-northeast1.goorm.site/register", {
+          body: JSON.stringify({
+            encodedImage: fileReader.result,
+            studentID: stuNum + "",
+          }),
+        }).then((res) => {
+          console.log(res.body);
+        });
       };
     }
   };
