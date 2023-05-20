@@ -110,7 +110,7 @@ export default function Student() {
             disabled={isUploaded}
             className={`mt-24 w-32 rounded-xl ${
               isUploaded
-                ? "bg-blue-501"
+                ? "bg-slate-500 text-gray-400"
                 : "bg-blue-500 hover:bg-teal-500 focus:bg-red-500 active:bg-yellow-500"
             } p-3 text-center text-white `}
           >
