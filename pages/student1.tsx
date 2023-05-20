@@ -40,7 +40,7 @@ export default function Student1() {
     <div className="flex h-screen w-full flex-col items-center justify-center bg-[#fbfbfd] px-20">
       <div className="rounded-2xl bg-white shadow-2xl">
         <form onSubmit={handleSubmit(onValid)}>
-          <div className="flex w-[50vw] flex-col items-center py-5 md:w-[380px]">
+          <div className="flex w-[80vw] flex-col items-center py-5 md:w-[380px]">
             <div className="relative h-28 w-28 overflow-hidden rounded-full bg-[rgba(0,0,0,0.2)] shadow-md ring-1 ring-stone-50">
               <input
                 type="file"

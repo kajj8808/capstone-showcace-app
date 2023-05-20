@@ -84,7 +84,7 @@ export default function Student() {
               ) : null}
             </div>
             <div className="flex flex-col justify-between border-l pl-3">
-              <div className="flex w-[50vw] flex-col md:w-[398px]">
+              <div className="flex w-[35vw] flex-col sm:w-[50vw] md:w-[398px]">
                 <span className="mb-1.5 text-xl font-medium">
                   {stuNum ? stuNum : ""}
                 </span>
@@ -105,10 +105,10 @@ export default function Student() {
             </div>
           </div>
         </div>
-        <div className="flex w-full justify-center">
+        <div className="mt-24 flex w-full justify-center">
           <button
             disabled={isUploaded}
-            className={`mt-24 w-32 rounded-xl ${
+            className={` w-32 rounded-xl ${
               isUploaded
                 ? "bg-slate-500 text-gray-400"
                 : "bg-blue-500 hover:bg-teal-500 focus:bg-red-500 active:bg-yellow-500"
@@ -117,7 +117,6 @@ export default function Student() {
             <span>Checkout</span>
           </button>
         </div>
-        )
       </form>
     </div>
   );
