@@ -12,6 +12,7 @@ export default function Student() {
   const [picrurePreview, setPicrurePreview] = useState("");
   const [uploadError, setUploadError] = useState<String | null>(null);
   const [stuNum, setStunum] = useState("");
+  const [isUploaded, setIsUploaded] = useState(false);
 
   const onValid = ({ picrure }: IForm) => {
     if (picrure) {
@@ -20,7 +21,7 @@ export default function Student() {
       fileReader.onload = () => {
         const base64 = fileReader.result
           ?.toString()
-          .split("data:image/jpeg;base64,/")[1];
+          .split("data:image/jpeg;base64,")[1];
         fetch("https://facecheck.run-asia-northeast1.goorm.site/register", {
           method: "POST",
           mode: "cors",
@@ -29,8 +30,13 @@ export default function Student() {
             encodedImage: base64,
             studentID: stuNum + "",
           }),
-        }).then((res) => {
-          console.log(res.body);
+        }).then(async (res) => {
+          if (res.status == 200) {
+            const { msg } = await res.json();
+            if (msg === "얼굴이 정상적으로 등록되었습니다") {
+              setIsUploaded(true);
+            }
+          }
         });
       };
     }
@@ -53,7 +59,7 @@ export default function Student() {
 
   useEffect(() => {
     const time = new Date().getTime() + "";
-    setStunum(time);
+    setStunum(`567${time.slice(9, 13)}`);
   }, []);
   return (
     <div className="flex h-screen w-full flex-col items-center justify-center bg-[#fbfbfd] px-20">
@@ -100,10 +106,18 @@ export default function Student() {
           </div>
         </div>
         <div className="flex w-full justify-center">
-          <button className="mt-24 w-32 rounded-xl bg-blue-500 p-3 text-center text-white hover:bg-teal-500 focus:bg-red-500 active:bg-yellow-500">
+          <button
+            disabled={isUploaded}
+            className={`mt-24 w-32 rounded-xl ${
+              isUploaded
+                ? "bg-blue-501"
+                : "bg-blue-500 hover:bg-teal-500 focus:bg-red-500 active:bg-yellow-500"
+            } p-3 text-center text-white `}
+          >
             <span>Checkout</span>
           </button>
         </div>
+        )
       </form>
     </div>
   );
