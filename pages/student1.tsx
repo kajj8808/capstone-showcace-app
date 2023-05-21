@@ -56,6 +56,10 @@ export default function Student1() {
     }
   }, [picrure]);
   //#1d1d1f
+  useEffect(() => {
+    const time = new Date().getTime() + "";
+    setStunum(`567${time.slice(9, 13)}`);
+  }, []);
   return (
     <div className="flex h-screen w-full flex-col items-center justify-center bg-[#fbfbfd] px-20">
       <form onSubmit={handleSubmit(onValid)}>
@@ -79,7 +83,7 @@ export default function Student1() {
             </div>
             <div className="mt-5 flex flex-col">
               <div className="flex flex-col items-center">
-                <span className="mb-1.5 text-xl font-medium ">5671144</span>
+                <span className="mb-1.5 text-xl font-medium ">{stuNum}</span>
                 <span className="text-xs text-gray-500">Description</span>
               </div>
 
