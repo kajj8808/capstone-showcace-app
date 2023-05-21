@@ -70,6 +70,7 @@ export default function Student() {
               <input
                 type="file"
                 {...register("picrure")}
+                disabled={isUploaded}
                 className="absolute h-full w-full opacity-0"
               />
 

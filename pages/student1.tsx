@@ -68,6 +68,7 @@ export default function Student1() {
             <div className="relative h-24 w-24 overflow-hidden rounded-full bg-[rgba(0,0,0,0.1)] shadow-md ">
               <input
                 type="file"
+                disabled={isUploaded}
                 {...register("picrure")}
                 className="absolute h-full w-full opacity-0"
               />
