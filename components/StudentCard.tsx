@@ -10,6 +10,7 @@ interface IProps {
   isUpload?: boolean;
   stuNum?: string;
   accuracy?: number;
+  isAcruccyMilestone?: boolean;
 }
 
 export default function StudentCard(props: IProps) {
@@ -79,20 +80,32 @@ export default function StudentCard(props: IProps) {
       <div className="relative rounded-2xl bg-white px-8 py-7 shadow-2xl">
         {props.isUpload ? null : (
           <>
-            <div className="absolute -right-3 flex h-9 w-24 items-center justify-center rounded-l-md bg-red-500 text-sm font-medium text-white">
-              <span>{props.accuracy}%</span>
-            </div>
-            <div className="absolute -right-3 top-[64px] h-5 w-3 border-b-[20px] border-l-[12px] border-b-transparent border-l-red-300"></div>
+            {props.isAcruccyMilestone ? (
+              <>
+                <div className="absolute -right-3 flex h-9 w-20 items-center justify-center rounded-l-md bg-red-500 text-sm font-medium text-white sm:w-24">
+                  <span>{props.accuracy}%</span>
+                </div>
+                <div className="absolute -right-3 top-[64px] h-5 w-3 border-b-[20px] border-l-[12px] border-b-transparent border-l-red-300"></div>
+              </>
+            ) : (
+              <>
+                <div className="absolute -right-3 flex h-9 w-24 items-center justify-center rounded-md bg-red-500 text-sm font-medium text-white">
+                  <span>{props.accuracy}%</span>
+                </div>
+              </>
+            )}
           </>
         )}
         <div className="flex gap-8">
-          <div className="relative h-28 w-28 overflow-hidden rounded-full bg-[rgba(0,0,0,0.2)] shadow-md ring-1 ring-stone-50">
-            <input
-              type="file"
-              {...register("picrure")}
-              disabled={isUploaded}
-              className="absolute h-full w-full opacity-0"
-            />
+          <div className="relative h-24 w-24 overflow-hidden rounded-full bg-[rgba(0,0,0,0.2)] shadow-md ring-1 ring-stone-50 sm:h-28 sm:w-28">
+            {props.isUpload ? (
+              <input
+                type="file"
+                {...register("picrure")}
+                disabled={isUploaded}
+                className="absolute h-full w-full opacity-0"
+              />
+            ) : null}
             {picrurePreview ? (
               <Image
                 src={picrurePreview}
@@ -114,7 +127,7 @@ export default function StudentCard(props: IProps) {
             <div className="flex justify-between">
               <div className="flex gap-2">
                 <span className="rounded-md bg-indigo-500 px-2 py-1 text-xs text-white">
-                  #컴퓨터 공학과
+                  # 컴퓨터 공학과
                 </span>
                 <span className="rounded-md bg-teal-500 px-2 py-1 text-xs text-white">
                   #
