@@ -4,6 +4,7 @@ const nextConfig = {
   env: {
     BASE_URL: process.env.BASE_URL,
   },
+  images: { domains: ["facecheck.run-asia-northeast1.goorm.site"] },
 };
 
 module.exports = nextConfig;
