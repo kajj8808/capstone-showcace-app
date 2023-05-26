@@ -14,23 +14,52 @@ export default function Show() {
   const { data, error } = useSWR<IFackcheckData>(
     "https://facecheck.run-asia-northeast1.goorm.site/detection"
   );
+
+  const testData: IFackcheckData = {
+    max_sim: 1,
+    studentId: "",
+    sim: [
+      { studentId: "", sim: 20 },
+      { studentId: "", sim: 20 },
+      { studentId: "", sim: 20 },
+      { studentId: "", sim: 20 },
+      { studentId: "", sim: 20 },
+      { studentId: "", sim: 20 },
+      { studentId: "", sim: 20 },
+    ],
+  };
   console.log(data);
   return (
     <div>
       <div className="fixed top-0 z-10 h-[300px] w-full">
-        <div className="h-[300px] w-full">
-          {data ? (
-            <Image
-              src={`https://facecheck.run-asia-northeast1.goorm.site/image?student_id=${data.studentId}`}
-              alt=""
-              width={630}
-              height={630}
-              className="h-full w-full object-cover object-center"
-            />
-          ) : null}
+        <div>
+          <div className="h-[300px] w-full bg-white">
+            {data?.studentId ? (
+              <Image
+                src={`https://facecheck.run-asia-northeast1.goorm.site/image?student_id=${data.studentId}`}
+                alt=""
+                width={630}
+                height={630}
+                className="h-full w-full object-cover object-center"
+              />
+            ) : (
+              <Image
+                src={`http://localhost:3000/FuzoaSaWYAIuR2P.jpg`}
+                alt=""
+                width={630}
+                height={630}
+                className="h-full w-full object-cover object-top "
+              />
+            )}
+          </div>
+          <div className="absolute top-0 z-20 h-full w-full bg-gradient-to-b from-transparent via-transparent to-gray-200"></div>
         </div>
         <div className="flex h-20 w-full flex-col items-center justify-center bg-white shadow-lg ">
-          <span className="text-xl">5671155</span>
+          <span className="text-xl">
+            {data?.studentId
+              ? `$${data.studentId}`
+              : "Not Found Matched Student..."}
+          </span>
           <span className="text-sm text-gray-600">
             {data?.max_sim.toFixed(2)}%
           </span>
@@ -40,6 +69,16 @@ export default function Show() {
         <div className="absolute -top-3 flex w-full justify-center"></div>
         <div className="mt-5 flex flex-col gap-5 px-5 ">
           {data?.sim.map((item, index) => (
+            <div key={index}>
+              <StudentCard
+                stuNum={item.studentId + ""}
+                accuracy={item.sim}
+                isAcruccyMilestone={true}
+              />
+            </div>
+          ))}
+
+          {testData.sim.map((item, index) => (
             <div key={index}>
               <StudentCard
                 stuNum={item.studentId + ""}
