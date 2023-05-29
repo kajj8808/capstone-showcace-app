@@ -77,7 +77,7 @@ export default function StudentCard(props: IProps) {
 
   return (
     <form onSubmit={handleSubmit(onValid)}>
-      <div className="relative rounded-2xl bg-white px-8 py-7 shadow-2xl shadow-red-300">
+      <div className="relative rounded-2xl bg-white px-8 py-7 shadow-xl ">
         {props.isUpload ? null : (
           <>
             {props.isAcruccyMilestone ? (
@@ -96,7 +96,7 @@ export default function StudentCard(props: IProps) {
             )}
           </>
         )}
-        <div className="flex gap-8">
+        <div className="flex gap-5">
           <div className="relative h-24 w-24 overflow-hidden rounded-full shadow-inner ring-1 ring-stone-50">
             {props.isUpload ? (
               <input
@@ -118,9 +118,7 @@ export default function StudentCard(props: IProps) {
           </div>
           <div className="flex flex-col justify-between border-l pl-5">
             <div className="flex w-[35vw] flex-col sm:w-[50vw] md:w-[398px]">
-              <span className="mb-1.5 text-xl font-medium">
-                {stuNum ? stuNum : ""}
-              </span>
+              <span className="mb-1.5 text-lg">{stuNum ? stuNum : ""}</span>
               <span className="text-xs text-gray-500">Description</span>
             </div>
 
