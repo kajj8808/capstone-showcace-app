@@ -120,7 +120,7 @@ export default function StudentCard(props: IProps) {
                   className="h-full w-full object-cover"
                 />
               ) : (
-                <span className="text-center text-sm text-gray-500 ">
+                <span className="rounded-full border-2 border-dashed p-5 text-center text-sm text-gray-500">
                   Add <br />
                   Image
                 </span>
