@@ -16,9 +16,9 @@ export default function Show() {
   );
 
   return (
-    <div className="md:mt-10 md:flex md:h-screen md:w-full md:justify-center">
-      <div className="fixed top-0 z-10 w-full overflow-hidden md:relative md:max-w-2xl md:rounded-3xl">
-        <div className="h-[260px] w-full bg-white md:h-[70vh]">
+    <div className="lg:mt-10 lg:flex lg:h-screen lg:w-full lg:justify-center">
+      <div className="fixed top-0 z-10 w-full lg:relative lg:max-w-2xl lg:rounded-3xl">
+        <div className="h-[320px] w-full bg-white lg:h-[70vh]">
           {data?.studentId ? (
             <Image
               src={`https://facecheck.run-asia-northeast1.goorm.site/image?student_id=${data.studentId}`}
@@ -37,7 +37,6 @@ export default function Show() {
             />
           )}
         </div>
-        {/* <div className="absolute top-0 z-20 h-[300px] w-full bg-gradient-to-b from-transparent via-transparent to-gray-100 md:h-[70vh]"></div> */}
         <div className="flex h-20 w-full flex-col items-center justify-center bg-white shadow-lg ">
           <span className="text-xl">
             {data?.studentId
@@ -49,8 +48,8 @@ export default function Show() {
           </span>
         </div>
       </div>
-      <div className="mt-[380px] py-3 md:mt-0">
-        <div className="mt-5 flex flex-col gap-5 px-7 sm:px-9 md:mt-0 ">
+      <div className="mt-[380px] py-3 lg:mt-0">
+        <div className="mt-5 flex flex-col gap-5 px-7 sm:px-9 lg:mt-0 ">
           {data?.sim
             ? data?.sim.map((item, index) => (
                 <div key={index}>
