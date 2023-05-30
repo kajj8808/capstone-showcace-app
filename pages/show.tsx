@@ -18,7 +18,7 @@ export default function Show() {
   return (
     <div className="md:mt-10 md:flex md:h-screen md:w-full md:justify-center">
       <div className="fixed top-0 z-10 w-full overflow-hidden md:relative md:max-w-2xl md:rounded-3xl">
-        <div className="h-[300px] w-full bg-white md:h-[70vh]">
+        <div className="h-[260px] w-full bg-white md:h-[70vh]">
           {data?.studentId ? (
             <Image
               src={`https://facecheck.run-asia-northeast1.goorm.site/image?student_id=${data.studentId}`}
@@ -37,7 +37,7 @@ export default function Show() {
             />
           )}
         </div>
-        <div className="absolute top-0 z-20 h-[300px] w-full bg-gradient-to-b from-transparent via-transparent to-gray-100 md:h-[70vh]"></div>
+        {/* <div className="absolute top-0 z-20 h-[300px] w-full bg-gradient-to-b from-transparent via-transparent to-gray-100 md:h-[70vh]"></div> */}
         <div className="flex h-20 w-full flex-col items-center justify-center bg-white shadow-lg ">
           <span className="text-xl">
             {data?.studentId
