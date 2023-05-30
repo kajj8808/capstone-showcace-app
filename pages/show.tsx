@@ -15,49 +15,33 @@ export default function Show() {
     "https://facecheck.run-asia-northeast1.goorm.site/detection"
   );
 
-  const testData: IFackcheckData = {
-    max_sim: 1,
-    studentId: "",
-    sim: [
-      { studentId: "", sim: 20 },
-      { studentId: "", sim: 20 },
-      { studentId: "", sim: 20 },
-      { studentId: "", sim: 20 },
-      { studentId: "", sim: 20 },
-      { studentId: "", sim: 20 },
-      { studentId: "", sim: 20 },
-    ],
-  };
-  console.log(data);
   return (
-    <div className="md:flex md:h-screen md:w-full md:justify-center ">
-      <div className="fixed top-0 z-10 w-full md:mx-auto md:max-w-2xl">
-        <div className="lg:overflow-hidden ">
-          <div className="h-[300px] w-full bg-white">
-            {data?.studentId ? (
-              <Image
-                src={`https://facecheck.run-asia-northeast1.goorm.site/image?student_id=${data.studentId}`}
-                alt=""
-                width={630}
-                height={630}
-                className="h-full w-full object-cover object-top"
-              />
-            ) : (
-              <Image
-                src={`http://localhost:3000/FuzoaSaWYAIuR2P.jpg`}
-                alt=""
-                width={630}
-                height={630}
-                className="h-full w-full object-cover object-top "
-              />
-            )}
-          </div>
-          <div className="absolute top-0 z-20 h-[300px] w-full bg-gradient-to-b from-transparent via-transparent to-gray-200"></div>
+    <div className="md:mt-10 md:flex md:h-screen md:w-full md:justify-center">
+      <div className="fixed top-0 z-10 w-full overflow-hidden md:relative md:max-w-2xl md:rounded-3xl">
+        <div className="h-[300px] w-full bg-white md:h-[70vh]">
+          {data?.studentId ? (
+            <Image
+              src={`https://facecheck.run-asia-northeast1.goorm.site/image?student_id=${data.studentId}`}
+              alt=""
+              width={630}
+              height={630}
+              className="h-full w-full object-cover object-top"
+            />
+          ) : (
+            <Image
+              src={`http://localhost:3000/FuzoaSaWYAIuR2P.jpg`}
+              alt=""
+              width={630}
+              height={630}
+              className="h-full w-full object-cover object-top "
+            />
+          )}
         </div>
+        <div className="absolute top-0 z-20 h-[300px] w-full bg-gradient-to-b from-transparent via-transparent to-gray-100 md:h-[70vh]"></div>
         <div className="flex h-20 w-full flex-col items-center justify-center bg-white shadow-lg ">
           <span className="text-xl">
             {data?.studentId
-              ? `$${data.studentId}`
+              ? `${data.studentId}`
               : "Not Found Matched Student..."}
           </span>
           <span className="text-sm text-gray-600">
@@ -65,8 +49,8 @@ export default function Show() {
           </span>
         </div>
       </div>
-      <div className="mt-[380px] py-3">
-        <div className="mt-5 flex flex-col gap-5 px-7 sm:px-9 ">
+      <div className="mt-[380px] py-3 md:mt-0">
+        <div className="mt-5 flex flex-col gap-5 px-7 sm:px-9 md:mt-0 ">
           {data?.sim
             ? data?.sim.map((item, index) => (
                 <div key={index}>

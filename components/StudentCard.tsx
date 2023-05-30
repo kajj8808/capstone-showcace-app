@@ -75,6 +75,8 @@ export default function StudentCard(props: IProps) {
     }
   }, [props]);
 
+  console.log(picrurePreview);
+
   return (
     <form onSubmit={handleSubmit(onValid)}>
       <div className="relative rounded-2xl bg-white px-8 py-7 shadow-xl ">
@@ -99,22 +101,31 @@ export default function StudentCard(props: IProps) {
         <div className="flex gap-5">
           <div className="relative h-24 w-24 overflow-hidden rounded-full shadow-inner ring-1 ring-stone-50">
             {props.isUpload ? (
-              <input
-                type="file"
-                {...register("picrure")}
-                disabled={isUploaded}
-                className="absolute h-full w-full opacity-0"
-              />
+              <div className="relative h-full w-full">
+                <input
+                  type="file"
+                  {...register("picrure")}
+                  disabled={isUploaded}
+                  className="absolute z-10 h-full w-full opacity-0"
+                />
+              </div>
             ) : null}
-            {picrurePreview ? (
-              <Image
-                src={picrurePreview}
-                width={430}
-                height={430}
-                alt="preview picrure"
-                className="h-full w-full object-cover"
-              />
-            ) : null}
+            <div className="absolute top-0 flex h-full w-full items-center justify-center">
+              {picrurePreview ? (
+                <Image
+                  src={picrurePreview}
+                  width={430}
+                  height={430}
+                  alt="preview picrure"
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <span className="text-center text-sm text-gray-500 ">
+                  Add <br />
+                  Image
+                </span>
+              )}
+            </div>
           </div>
           <div className="flex flex-col justify-between border-l pl-5">
             <div className="flex w-[35vw] flex-col sm:w-[50vw] md:w-[398px]">
