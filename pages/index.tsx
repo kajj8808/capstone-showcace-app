@@ -17,7 +17,7 @@ export default function Show() {
 
   return (
     <div className="lg:mt-10 lg:flex lg:h-screen lg:w-full lg:justify-center">
-      <div className="fixed top-0 z-10 w-full lg:relative lg:max-w-2xl lg:rounded-3xl">
+      <div className="fixed -top-5 z-10 w-full lg:relative lg:max-w-2xl lg:rounded-3xl">
         <div className="h-[320px] w-full bg-white lg:h-[70vh]">
           {data?.studentId ? (
             <Image
@@ -27,15 +27,7 @@ export default function Show() {
               height={630}
               className="h-full w-full object-cover object-top"
             />
-          ) : (
-            <Image
-              src={`http://localhost:3000/FuzoaSaWYAIuR2P.jpg`}
-              alt=""
-              width={630}
-              height={630}
-              className="h-full w-full object-cover object-top "
-            />
-          )}
+          ) : null}
         </div>
         <div className="flex h-20 w-full flex-col items-center justify-center bg-white shadow-lg ">
           <span className="text-xl">
