@@ -144,11 +144,6 @@ export default function StudentCard(props: IProps) {
               </div>
             </div>
           </div>
-          {/*  {props.isUpload ? null : (
-            <div className="absolute right-5 bottom-7 text-sm text-gray-400">
-              Team 4
-            </div>
-          )} */}
         </div>
       </div>
       {props.isUpload ? (
