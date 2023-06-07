@@ -16,9 +16,9 @@ export default function Show() {
   );
 
   return (
-    <div className="lg:mt-10 lg:flex lg:h-screen lg:w-full lg:justify-center">
-      <div className="fixed -top-5 z-10 w-full lg:relative lg:max-w-2xl lg:rounded-3xl">
-        <div className="h-[320px] w-full bg-white lg:h-[70vh]">
+    <div className="lg:flex lg:h-screen lg:w-full lg:justify-center lg:px-5 lg:pt-10 ">
+      <div className="fixed -top-14 z-10 w-full md:-top-24 lg:relative lg:top-0 lg:max-w-2xl lg:rounded-3xl">
+        <div className="h-[320px] w-full bg-white md:h-[500px] lg:h-[60vh] lg:min-h-[770px] lg:overflow-hidden lg:rounded-t-3xl">
           {data?.studentId ? (
             <Image
               src={`https://facecheck.run-asia-northeast1.goorm.site/image?student_id=${data.studentId}`}
@@ -29,7 +29,7 @@ export default function Show() {
             />
           ) : null}
         </div>
-        <div className="flex h-20 w-full flex-col items-center justify-center bg-white shadow-lg ">
+        <div className="flex h-20 w-full flex-col items-center justify-center rounded-b-md bg-white shadow-lg">
           <span className="text-xl">
             {data?.studentId
               ? `${data.studentId}`
@@ -40,7 +40,7 @@ export default function Show() {
           </span>
         </div>
       </div>
-      <div className="mt-[380px] py-3 lg:mt-0">
+      <div className="mt-[320px] py-3 md:mt-[470px] lg:mt-0">
         <div className="mt-5 flex flex-col gap-5 px-7 sm:px-9 lg:mt-0 ">
           {data?.sim
             ? data?.sim.map((item, index) => (
