@@ -161,7 +161,7 @@ export default function StudentCard(props: IProps) {
                 : "w-32 bg-blue-500 hover:bg-teal-500 focus:bg-red-500 active:bg-yellow-500 "
             } p-3 text-center text-white `}
           >
-            <span>{isUploaded ? "Checkout Done" : "Checkout"}</span>
+            <span>{isUploaded ? "Checkout Done ✅" : "Checkout"}</span>
           </button>
         </div>
       ) : null}

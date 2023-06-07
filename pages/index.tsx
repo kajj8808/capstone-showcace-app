@@ -16,7 +16,7 @@ export default function Show() {
   );
 
   return (
-    <div className="lg:flex lg:h-screen lg:w-full lg:justify-center lg:px-5 lg:pt-10 ">
+    <div className="lg:flex lg:h-screen lg:w-full lg:items-center lg:justify-center lg:px-5">
       <div className="fixed -top-14 z-10 w-full md:-top-24 lg:relative lg:top-0 lg:max-w-2xl lg:rounded-3xl">
         <div className="h-[320px] w-full bg-white md:h-[500px] lg:h-[60vh] lg:min-h-[770px] lg:overflow-hidden lg:rounded-t-3xl">
           {data?.studentId ? (
